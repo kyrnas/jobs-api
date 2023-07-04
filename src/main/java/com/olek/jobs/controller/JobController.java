@@ -1,7 +1,6 @@
 package com.olek.jobs.controller;
 
 import com.olek.jobs.model.job.Job;
-import com.olek.jobs.model.job.Technology;
 import com.olek.jobs.repository.JobLocationRepository;
 import com.olek.jobs.repository.JobRepository;
 import com.olek.jobs.repository.JobTechnologyRepository;
@@ -82,13 +81,18 @@ public class JobController {
     }
 
     // TODO test that this even works with technology and locations FK
+    // upd: it doesn't
     @PutMapping(value = "/job", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Job> updateExistingJob(@RequestBody Job updatedJob) {
         log.info("Called updateExistingJob with body: {}", updatedJob);
-        try {
-            Job instance = jobRepository.getReferenceById(updatedJob.getId());
+        Optional<Job> job = jobRepository.findById(updatedJob.getId());
+
+        if (job.isPresent()){
+            updatedJob.setTechnologies(null);
+            updatedJob.setLocations(null);
             jobRepository.save(updatedJob);
-        } catch (Exception e) {
+        }
+        else {
             // TODO create exception handlers
             throw new NullPointerException("Did not find an existing object with id " + updatedJob.getId());
         }
