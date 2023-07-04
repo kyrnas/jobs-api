@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "c6eab0d3-0a18-4615-8857-9dedc59fa5b1",
+		"name": "Oleksx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28177357"
+	},
+	"item": [
+		{
+			"name": "Health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/actuator/health",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jobsAll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jobsAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jobs SEARCH",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jobs?isActive=true&tags=tag1&technologies=Spring Boot, React&locations=Chicago, Warsaw&pageNum=0&pageSize=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "isActive",
+							"value": "true"
+						},
+						{
+							"key": "tags",
+							"value": "tag1"
+						},
+						{
+							"key": "type",
+							"value": "Part Time",
+							"disabled": true
+						},
+						{
+							"key": "technologies",
+							"value": "Spring Boot, React"
+						},
+						{
+							"key": "locations",
+							"value": "Chicago, Warsaw"
+						},
+						{
+							"key": "pageNum",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/job/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "e47743fd-cfd8-42f7-bd48-e41060dbec03"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive Job By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/job/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "80f372c2-ef9f-4b41-a604-adc0ca0cec93"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Existing Job",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"80f372c2-ef9f-4b41-a604-adc0ca0cec93\",\r\n    \"title\": \"Software Engineer Part Time\",\r\n    \"description\": \"Looking for an engieneer who will do work\",\r\n    \"salary\": 100000.99,\r\n    \"applyUrl\": \"www.linkedin.com\",\r\n    \"type\": \"Part Time\",\r\n    \"tags\": [\r\n        \"Part Time\"\r\n    ],\r\n    \"technologies\": [\r\n        {\r\n            \"technology\": {\r\n                \"id\": \"2b739d7e-0b2e-4e66-9c9c-94878a4d7963\"\r\n            },\r\n            \"importance\": 5\r\n        },\r\n        {\r\n            \"technology\": {\r\n                \"id\": \"ed5f9c23-cdd3-4508-8962-a343af9dc967\"\r\n            },\r\n            \"importance\": 3\r\n        }\r\n    ],\r\n    \"locations\": [\r\n        {\r\n            \"location\": {\r\n                \"id\": \"8891d1a3-db5c-420c-a9a2-0800fe539db9\"\r\n            },\r\n            \"latitude\": 52.221372060345615,\r\n            \"longitude\": 21.008107155184597\r\n        },\r\n        {\r\n            \"location\": {\r\n                \"id\": \"66561637-f6bc-48df-ba69-eec51afe399d\"\r\n            },\r\n            \"latitude\": 41.89215211947869,\r\n            \"longitude\": -87.6678994481815\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/job",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Job",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Software Engineer\",\r\n    \"description\": \"Looking for an engieneer who will do work\",\r\n    \"salary\": 100000.99,\r\n    \"applyUrl\": \"www.linkedin.com\",\r\n    \"type\": \"Full Time\",\r\n    \"tags\": [\r\n        \"tag1\",\r\n        \"tag2\",\r\n        \"tag3\"\r\n    ],\r\n    \"technologies\": [\r\n        {\r\n            \"technology\": {\r\n                \"id\": \"2b739d7e-0b2e-4e66-9c9c-94878a4d7963\"\r\n            },\r\n            \"importance\": 5\r\n        },\r\n        {\r\n            \"technology\": {\r\n                \"id\": \"ed5f9c23-cdd3-4508-8962-a343af9dc967\"\r\n            },\r\n            \"importance\": 3\r\n        }\r\n    ],\r\n    \"locations\": [\r\n        {\r\n            \"location\": {\r\n                \"id\": \"8891d1a3-db5c-420c-a9a2-0800fe539db9\"\r\n            },\r\n            \"latitude\": 52.221372060345615,\r\n            \"longitude\": 21.008107155184597\r\n        },\r\n        {\r\n            \"location\": {\r\n                \"id\": \"66561637-f6bc-48df-ba69-eec51afe399d\"\r\n            },\r\n            \"latitude\": 41.89215211947869,\r\n            \"longitude\": -87.6678994481815\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/job",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Technology",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"React\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/admin/technology",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"technology"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Technology 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Spring Boot\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/admin/technology",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"technology"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Warsaw\",\r\n    \"country\": \"Poland\",\r\n    \"city\": \"Warsaw\",\r\n    \"displayName\": \"Warsaw\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/admin/location",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Location 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chicago\",\r\n    \"country\": \"US\",\r\n    \"city\": \"Chicago\",\r\n    \"displayName\": \"Chicago, IL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/admin/location",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/admin/location",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All technologies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/admin/technology",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"technology"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
